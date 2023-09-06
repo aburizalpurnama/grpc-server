@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package = "github.com/aburizalpurnama/grpc-server/proto";
+
+package proto;
+
+service Accounts {
+    rpc SelectAccount (SelectAccountRequest) returns (SelectAccountResponse);
+}
+
+message SelectAccountRequest{}
+
+message SelectAccountResponse {
+    repeated Account accounts = 1;
+}
+  
+message Account {
+    int32 id = 1;
+    string name = 2;
+    double balance = 3;
+}

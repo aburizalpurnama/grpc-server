@@ -1,0 +1,2 @@
+FROM golang:1.21-alpine
+ENV APP_PORT=8081
