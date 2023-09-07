@@ -1,5 +1,12 @@
 FROM golang:1.21-alpine AS build
+
 ENV APP_PORT=8081
+ENV DB_USERNAME=test
+ENV DB_PASSWORD=test
+ENV DB_HOST=localhost
+ENV DB_PORT=3435
+ENV DB_NAME=test
+
 WORKDIR /app
 
 COPY . /app/

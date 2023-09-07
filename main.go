@@ -32,8 +32,8 @@ type server struct {
 }
 
 func (s *server) SelectAccount(ctx context.Context, req *proto.SelectAccountRequest) (*proto.SelectAccountResponse, error) {
-
-	db, err := sqlx.Connect("postgres", "postgres://test:test@localhost:5435/test?&sslmode=disable")
+	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?&sslmode=disable", os.Getenv("DB_USERNAME"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"))
+	db, err := sqlx.Connect("postgres", dsn)
 	if err != nil {
 		log.Fatalln(err)
 	}
